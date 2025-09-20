@@ -25,7 +25,7 @@ interface DT723Props {
   token: string
 }
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoibWF0aWFndWlsZXJhIiwiYSI6ImNsZHVlOXFqZTA0emczbnA5eWxmaWNia2sifQ.G7L0t9gYA7XpsLuiEuVu1g'
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || 'your-mapbox-token'
 
 const DT723: React.FC<DT723Props> = ({ token }) => {
   const [nodes, setNodes] = useState<Node[]>([])
@@ -45,7 +45,8 @@ const DT723: React.FC<DT723Props> = ({ token }) => {
   useEffect(() => {
     const fetchNodes = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/locations', {
+        const apiUrl = process.env.REACT_APP_LOCAL_API_URL || 'http://localhost:3001/api';
+        const response = await fetch(`${apiUrl}/locations`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

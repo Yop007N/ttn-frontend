@@ -1,7 +1,11 @@
 {
-  "name": "ttn-frontend",
-  "version": "0.1.0",
+  "name": "ttn-iot-dashboard",
+  "version": "1.0.0",
   "private": true,
+  "description": "Dashboard moderno para monitoreo y gestión de dispositivos IoT en The Things Network",
+  "keywords": ["TTN", "IoT", "LoRaWAN", "dashboard", "devices", "monitoring", "typescript", "react"],
+  "author": "Enrique Bobadilla",
+  "license": "MIT",
   "dependencies": {
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
@@ -24,7 +28,7 @@
     "react-tooltip": "^5.28.0",
     "recharts": "^2.12.7",
     "tailwind-merge": "^2.5.2",
-    "typescript": "^5.3.3",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -33,7 +37,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix"
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "build:analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
+    "serve": "serve -s build -l 3000"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +65,7 @@
     "@types/react-tooltip": "^4.2.4",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
+    "serve": "^14.2.3",
     "tailwindcss": "^3.4.11"
   }
 }

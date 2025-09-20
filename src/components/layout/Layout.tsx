@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { Home, Box, Wifi, Settings, LogOut, Menu, Zap } from 'lucide-react'
+import NotificationCenter from '../notifications/NotificationCenter'
 
 interface PropsDiseño {
   onCerrarSesion: () => void
@@ -73,14 +74,17 @@ export default function Diseño({ onCerrarSesion }: PropsDiseño) {
         </div>
       </nav>
       <div className="flex-1 flex flex-col">
-        <header className="bg-gray-800 text-white p-4 flex items-center justify-center relative">
+        <header className="bg-gray-800 text-white p-4 flex items-center justify-between relative">
           <button
             onClick={toggleSidebar}
-            className="text-white p-2 rounded-md hover:bg-gray-700 absolute left-4"
+            className="text-white p-2 rounded-md hover:bg-gray-700"
           >
             <Menu size={24} />
           </button>
           <h2 className="text-xl font-bold">{getTitle()}</h2>
+          <div className="flex items-center space-x-4">
+            <NotificationCenter />
+          </div>
         </header>
         <main className="flex-1 p-8 overflow-auto bg-gray-100">
           <Outlet />

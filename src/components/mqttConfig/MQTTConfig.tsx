@@ -14,9 +14,9 @@ interface ConfiguracionMQTT {
 
 export default function ConfiguracionMQTTComponent({ token }: PropsMQTTConfig) {
   const [config] = useState<ConfiguracionMQTT>({
-    direccionPublica: '10.4.33.18:1883',
-    direccionPublicaTLS: '10.4.33.18:8883',
-    nombreUsuario: 'adaptador-iot',
+    direccionPublica: process.env.REACT_APP_MQTT_BROKER_URL?.replace('wss://', '').replace(':8084', ':1883') || 'nam1.cloud.thethings.network:1883',
+    direccionPublicaTLS: process.env.REACT_APP_MQTT_BROKER_URL?.replace('wss://', '').replace(':8084', ':8883') || 'nam1.cloud.thethings.network:8883',
+    nombreUsuario: process.env.REACT_APP_APPLICATION_ID || 'your-application-id',
   })
   const [claveAPI, setClaveAPI] = useState<string>('')
 

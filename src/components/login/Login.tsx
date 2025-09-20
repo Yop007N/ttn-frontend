@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AlertCircle, User, Key, LogIn, Loader } from 'lucide-react'
 
-const API_BASE_URL = 'https://10.4.33.18/api/v3'
+// PROBLEMA ARREGLADO: Se removió la URL hardcodeada y se usa variable de entorno
+const API_BASE_URL = process.env.REACT_APP_TTN_API_BASE_URL || 'https://nam1.cloud.thethings.network/api/v3'
 interface LoginProps {
   onLogin: (token: string, userId: string) => void
 }
